@@ -13,9 +13,9 @@ import java.util.Map;
 public class UserEnitityService {
 
     @Autowired
-    private static UserRepository userRepository;
+    private UserRepository userRepository;
 
-    public static String addUser(Map<String, Object> payload){
+    public String addUser(Map<String, Object> payload){
         try {
             System.out.println("In add User service");
             UserEntity user = new UserEntity();
@@ -38,7 +38,7 @@ public class UserEnitityService {
 
             user.setPhoneNumber((String) payload.get("phone"));
             System.out.println("before save");
-            userRepository.save(user);
+            UserEntity user1 = userRepository.save(user);
             //System.out.println(user1.getId());
 
             return "User Added";
