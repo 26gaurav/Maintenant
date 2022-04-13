@@ -30,15 +30,15 @@ public class UserEnitityService {
             address = address + "\"pin\": \"" + (String) payload.get("pin") + "\" }";
             user.setAddressDetail(address);
             user.setAge((Integer) payload.get("age")) ;
-
-
             user.setEmail((String) payload.get("email"));
             user.setFirstName((String) payload.get("fname"));
             user.setLastName((String) payload.get("lname"));
             user.setGender((String)payload.get("gender"));
-
-
             user.setPhoneNumber((String) payload.get("phone"));
+
+            System.out.println(user);
+            System.out.println(user.getAddressDetail());
+            System.out.println(user.getId());
             System.out.println("before save");
             UserEntity user1 = userRepository.save(user);
             //System.out.println(user1.getId());
