@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -48,5 +50,9 @@ public class UserEnitityService {
         }
     }
 
-
+    public List<UserEntity> getAllusers(){
+        List<UserEntity> users = new ArrayList<UserEntity>();
+        userRepository.findAll().forEach(user ->users.add(user));
+        return users;
+    }
 }

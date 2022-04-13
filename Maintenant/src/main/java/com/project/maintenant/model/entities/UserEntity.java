@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonRawValue;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 @Table(name = "User", schema = "MunicipalityInitiative", catalog = "")
@@ -60,8 +61,8 @@ public class UserEntity {
     @Column(name = "Password")
     private String password;
 
-    public UserEntity() {
-    }
+    @OneToMany(mappedBy = "userByCreatedBy")
+    private Collection<ComplaintEntity> complaints;
 
     public long getId() {
         return id;
