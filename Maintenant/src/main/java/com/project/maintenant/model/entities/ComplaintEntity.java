@@ -52,7 +52,7 @@ public class ComplaintEntity {
     private String progressDescription;
 
     @ManyToOne
-    @JoinColumn(name = "CreatedBy", referencedColumnName = "Id", nullable = false, insertable=false, updatable=false)
+    @JoinColumn(name = "CreatedBy", referencedColumnName = "Id", nullable = false)
     private UserEntity userByCreatedBy;
 
     public long getId() {

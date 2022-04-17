@@ -1,6 +1,7 @@
 package com.project.maintenant.services;
 
 import com.project.maintenant.model.entities.UserEntity;
+import com.project.maintenant.model.entities.WorkerEntity;
 import com.project.maintenant.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,6 +37,9 @@ public class UserEnitityService {
             user.setGender((String)payload.get("gender"));
             user.setPhoneNumber((String) payload.get("phone"));
 
+            user.setUsername((String) payload.get("username"));
+            user.setPassword((String) payload.get("password"));
+
             System.out.println(user);
             System.out.println(user.getAddressDetail());
             System.out.println(user.getId());
@@ -54,5 +58,23 @@ public class UserEnitityService {
         List<UserEntity> users = new ArrayList<UserEntity>();
         userRepository.findAll().forEach(user ->users.add(user));
         return users;
+    }
+
+    public boolean login(Map<String, Object> payload){
+        List<UserEntity> userEntityList = userRepository.getByUsername((String) payload.get("username"));
+        if (userEntityList.size()>0 &&
+                userEntityList.get(0).getPassword().equals((String) payload.get("password"))){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean adminLogin(Map<String, Object> payload){
+
+        //hardcoded username and password of admin
+        if(payload.get("username").equals("admin") && payload.get("password").equals("password")){
+            return true;
+        }else
+            return false;
     }
 }

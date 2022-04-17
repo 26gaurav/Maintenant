@@ -5,8 +5,8 @@ import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 
-
-
+@Entity
+@Table(name = "Worker", schema = "MunicipalityInitiative", catalog = "")
 public class WorkerEntity {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
