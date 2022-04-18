@@ -1,10 +1,13 @@
 package com.project.maintenant.model.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonRawValue;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.List;
 
 @Entity
 @Table(name = "Complaint", schema = "MunicipalityInitiative", catalog = "")
@@ -54,6 +57,13 @@ public class ComplaintEntity {
     @ManyToOne
     @JoinColumn(name = "CreatedBy", referencedColumnName = "Id", nullable = false, insertable=false, updatable=false)
     private UserEntity userByCreatedBy;
+
+    @ManyToMany
+    @JoinTable(
+            name = "complaintMapping",
+            joinColumns = @JoinColumn(name = "complaint_id"),
+            inverseJoinColumns = @JoinColumn(name = "worker_id"))
+    private List<WorkerEntity> assignedWorker;
 
     public long getId() {
         return id;
@@ -119,11 +129,21 @@ public class ComplaintEntity {
         this.progressDescription = progressDescription;
     }
 
+    @JsonBackReference
     public UserEntity getUserByCreatedBy() {
         return userByCreatedBy;
     }
 
     public void setUserByCreatedBy(UserEntity userByCreatedBy) {
         this.userByCreatedBy = userByCreatedBy;
+    }
+
+    @JsonManagedReference
+    public List<WorkerEntity> getAssignedWorker() {
+        return assignedWorker;
+    }
+
+    public void setAssignedWorker(List<WorkerEntity> assignedWorker) {
+        this.assignedWorker = assignedWorker;
     }
 }

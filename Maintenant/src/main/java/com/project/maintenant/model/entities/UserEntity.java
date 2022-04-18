@@ -1,10 +1,12 @@
 package com.project.maintenant.model.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonRawValue;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table(name = "User", schema = "MunicipalityInitiative", catalog = "")
@@ -62,7 +64,7 @@ public class UserEntity {
     private String password;
 
     @OneToMany(mappedBy = "userByCreatedBy")
-    private Collection<ComplaintEntity> complaints;
+    private List<ComplaintEntity> complaints;
 
     public long getId() {
         return id;
@@ -142,5 +144,14 @@ public class UserEntity {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @JsonManagedReference
+    public List<ComplaintEntity> getComplaints() {
+        return complaints;
+    }
+
+    public void setComplaints(List<ComplaintEntity> complaints) {
+        this.complaints = complaints;
     }
 }

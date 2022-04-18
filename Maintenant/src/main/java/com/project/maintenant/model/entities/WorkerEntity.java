@@ -1,12 +1,15 @@
 package com.project.maintenant.model.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonRawValue;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
+import java.util.List;
 
 
-
+@Entity
+@Table(name = "worker", schema = "MunicipalityInitiative", catalog = "")
 public class WorkerEntity {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -62,8 +65,11 @@ public class WorkerEntity {
 
     @Basic
     @NotNull
-    @Column(name = "Organisatin")
+    @Column(name = "Organisation")
     private String organisation;
+
+    @ManyToMany(mappedBy="assignedWorker")
+    private List<ComplaintEntity> complaintEntity;
 
     public long getId() {
         return id;
@@ -151,5 +157,14 @@ public class WorkerEntity {
 
     public void setOrganisation(String organisation) {
         this.organisation = organisation;
+    }
+
+    @JsonBackReference
+    public List<ComplaintEntity> getComplaintEntity() {
+        return complaintEntity;
+    }
+
+    public void setComplaintEntity(List<ComplaintEntity> complaintEntity) {
+        this.complaintEntity = complaintEntity;
     }
 }
