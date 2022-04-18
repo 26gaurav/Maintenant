@@ -2,8 +2,10 @@ package com.project.maintenant.services;
 
 import com.project.maintenant.model.entities.ComplaintEntity;
 import com.project.maintenant.model.entities.UserEntity;
+import com.project.maintenant.model.entities.WorkerEntity;
 import com.project.maintenant.repo.ComplaintRepository;
 import com.project.maintenant.repo.UserRepository;
+import com.project.maintenant.repo.WorkerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +21,9 @@ public class ComplaintEntityService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private WorkerRepository workerRepository;
 
     public String addComplaint(Map<String, Object> payload,Long userId){
         try {
@@ -108,6 +113,26 @@ public class ComplaintEntityService {
             e.printStackTrace();
             return e.getMessage();
         }
+    }
+
+    //FOR ADMIN operations
+    public boolean complaintMapping(Long workerId, Long complaint_id){
+        ComplaintEntity complaintEntity = complaintRepository.getById(complaint_id);
+        System.out.println("here in cmplaintmaping of complaintEntityService");
+        System.out.println(complaintEntity);
+        List<WorkerEntity> workerEntityList = complaintEntity.getAssignedWorker();
+        for(WorkerEntity worker: workerEntityList){
+            System.out.println("in for each loop");
+            System.out.println(worker.getId());
+            if (worker.getId()==workerId)
+                return false;
+        }
+        System.out.println("complaint_id is "+complaint_id+" worker_id "+workerId);
+        WorkerEntity worker = workerRepository.getById(workerId);
+        System.out.println("after for each loop "+worker.getId());
+        workerEntityList.add(worker);
+        complaintRepository.save(complaintEntity);
+        return true;
     }
 
 }

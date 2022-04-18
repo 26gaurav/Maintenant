@@ -4,15 +4,15 @@ import com.project.maintenant.model.entities.ComplaintEntity;
 import com.project.maintenant.services.WorkerEntityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
 
+@RestController
+@CrossOrigin(origins = "*")
 public class WorkerController {
+
     @Autowired
     WorkerEntityService workerEntityService;
 
@@ -32,5 +32,13 @@ public class WorkerController {
             return ResponseEntity.badRequest().body("No complaint Assigned to the worker");
         else
             return ResponseEntity.ok(complaintEntity);
+    }
+
+    @GetMapping("worker/{worker_id}/{complaint_id}/updateProgress")
+    public ResponseEntity<?> updateProgress(@PathVariable Long worker_id, Long complaint_id){
+        if(workerEntityService.updateProgress(worker_id, complaint_id))
+            return ResponseEntity.ok("Progress updated successfully");
+        else
+            return ResponseEntity.badRequest().body("progress updation unsuccessful;");
     }
 }
