@@ -5,3 +5,25 @@
     padding: 2px;
     color: black;
 }
+
+.example-card {
+    max-width: 100%;
+  }
+  
+  .example-header-image {
+    background-image: url('../../../assets/maintain.jpg');
+    background-size: cover;
+  }
+
+  #center {  
+    /* display: flex;
+    justify-content: center; */
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}  
+
+  

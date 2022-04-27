@@ -17,22 +17,23 @@ import { ViewWorkersComponent } from './pages/view-workers/view-workers.componen
 import { AdminComplaintsComponent } from './pages/admin-complaints/admin-complaints.component';
 import { MapWorkersComponent } from './pages/map-workers/map-workers.component';
 import { WorkerDashboardComponent } from './pages/worker-dashboard/worker-dashboard.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes=[
   { path: '', component: HomeComponent  },
   { path:'signup', component: SignupComponent, pathMatch: 'full'},
-  { path: 'login', component: LoginComponent,  pathMatch: 'full' },//canActivate, RouteGuardService
-  { path: 'admin', component: DashboardComponent, pathMatch: 'full'},
-  { path: 'user-dashboard', component: UserDashboardComponent, pathMatch: 'full'},
-  { path: 'add-complaint', component: AddComplaintComponent, pathMatch: 'full'},
-  { path: 'update-complaint/:id', component: UpdateComplaintComponent, pathMatch: 'full'},
-  { path: 'view-complaints', component: ViewComplaintsComponent, pathMatch: 'full'},
-  { path: 'crud-workers', component: CrudWorkersComponent, pathMatch: 'full'},
-  { path: 'add-worker', component: AddWorkerComponent, pathMatch: 'full'},
-  { path: 'view-workers', component: ViewWorkersComponent, pathMatch: 'full'},
-  { path: 'admin-complaints', component: AdminComplaintsComponent, pathMatch: 'full'},
-  { path: 'map-workers/:id', component: MapWorkersComponent, pathMatch: 'full'},
-  { path: 'worker-dashboard', component: WorkerDashboardComponent, pathMatch: 'full'},
+  { path: 'login', component: LoginComponent,  pathMatch: 'full' },
+  { path: 'admin', component: DashboardComponent, pathMatch: 'full', canActivate: [AuthGuard]},
+  { path: 'user-dashboard', component: UserDashboardComponent, pathMatch: 'full', canActivate: [AuthGuard]},
+  { path: 'add-complaint', component: AddComplaintComponent, pathMatch: 'full', canActivate: [AuthGuard]},
+  { path: 'update-complaint/:id', component: UpdateComplaintComponent, pathMatch: 'full', canActivate: [AuthGuard]},
+  { path: 'view-complaints', component: ViewComplaintsComponent, pathMatch: 'full', canActivate: [AuthGuard]},
+  { path: 'crud-workers', component: CrudWorkersComponent, pathMatch: 'full', canActivate: [AuthGuard]},
+  { path: 'add-worker', component: AddWorkerComponent, pathMatch: 'full', canActivate: [AuthGuard]},
+  { path: 'view-workers', component: ViewWorkersComponent, pathMatch: 'full', canActivate: [AuthGuard]},
+  { path: 'admin-complaints', component: AdminComplaintsComponent, pathMatch: 'full', canActivate: [AuthGuard]},
+  { path: 'map-workers/:id', component: MapWorkersComponent, pathMatch: 'full', canActivate: [AuthGuard]},
+  { path: 'worker-dashboard', component: WorkerDashboardComponent, pathMatch: 'full', canActivate: [AuthGuard]},
   { path:'**', component: ErrorComponent}
 ]
 

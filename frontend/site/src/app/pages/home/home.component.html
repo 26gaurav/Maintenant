@@ -1,12 +1,22 @@
-<div class="bootstrap-wrapper">
-    <div class="container">
-      <div class="row mt20">
-        <div class="col-md-6 offset-md-3 text-center">
-          <h1>Welcome to Maintenant Site</h1>
-          <h2 class="italics">"A Place where all your complaints will be resolved in no time!!"</h2>
-          <button mat-raised-button color="accent">Home Page</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  
+<div id="center">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>Welcome to Maintenant Site</mat-card-title>
+      <mat-card-subtitle class="italics"
+        >"A Place where all your complaints will be resolved in no
+        time!!"</mat-card-subtitle
+      >
+    </mat-card-header>
+    <img
+      mat-card-image
+      src="./../../../assets/highway.jpg"
+      alt="Photo of a Shiba Inu"
+    />
+    <mat-card-actions>
+      <button mat-raised-button color="accent" [routerLink]="['/login']">
+        WANT SUCH BEAUTIFUL INFRASTRUCTURE IN YOUR SOCIETY???
+     </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

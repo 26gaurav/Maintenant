@@ -44,6 +44,7 @@ import { MapWorkersComponent } from './pages/map-workers/map-workers.component';
 
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import { WorkerDashboardComponent } from './pages/worker-dashboard/worker-dashboard.component';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [
@@ -86,7 +87,7 @@ import { WorkerDashboardComponent } from './pages/worker-dashboard/worker-dashbo
     MatTableModule,
     MatButtonToggleModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

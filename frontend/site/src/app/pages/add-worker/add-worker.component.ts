@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WorkerService } from 'src/app/services/worker.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-worker',
@@ -39,7 +40,8 @@ export class AddWorkerComponent implements OnInit {
       (data: any) => {
         //success
         console.log(data);
-        alert('Worker Successfully added');
+        Swal.fire('Worker successfully added!!!');
+        //alert('Worker Successfully added');
         this.router.navigate(['crud-workers']);
       },
       (error) => {
