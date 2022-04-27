@@ -1,0 +1,48 @@
+<div fxLayout="row">
+    <mat-card class="example-card inline-block" fxFlexAlign="stretch" style="margin: 15px">
+      <mat-card-header>
+        <mat-card-title>CRUD ON WORKERS</mat-card-title>
+        <mat-card-subtitle>Add/Delete/Update workers</mat-card-subtitle>
+      </mat-card-header>
+      <img
+        mat-card-image
+        src="../../../../assets/worker.jpg"
+        alt="Photo of bad roads"
+      />
+      <mat-card-content>
+        <p>
+          Being an admin, you can perform <b>CRUD OPERATIONS ON WORKERS</b> i.e. add/delete/update workers
+          from various organizations on a given task.
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" [routerLink]="'/crud-workers'">
+          CRUD ON WORKERS
+        </button>
+      </mat-card-actions>
+    </mat-card>
+    
+    <mat-card class="example-card inline-block" fxFlexAlign="stretch" style="margin: 15px" >
+        <mat-card-header>
+          <mat-card-title>EDIT AND MAP COMPLAINTS</mat-card-title>
+          <mat-card-subtitle>Edit and map complaints</mat-card-subtitle>
+        </mat-card-header>
+        <img
+          mat-card-image
+          src="../../../../assets/roads maintain.jpg"
+          alt="Photo of bad roads"
+        />
+        <mat-card-content>
+          <p>
+            Click here to view all complaints, <b>EDIT THEM: UPDATE THE PROGRESS</b> and map those to suitable workers
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="accent" [routerLink]="'/admin-complaints'">
+            EDIT AND MAP COMPLAINTS
+          </button>
+        </mat-card-actions>
+    </mat-card>
+    
+    </div>
+    

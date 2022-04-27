@@ -1,5 +1,6 @@
 package com.project.maintenant.services;
 
+import com.project.maintenant.model.entities.ComplaintEntity;
 import com.project.maintenant.model.entities.UserEntity;
 import com.project.maintenant.model.entities.WorkerEntity;
 import com.project.maintenant.repo.UserRepository;
@@ -18,7 +19,7 @@ public class UserEnitityService {
     @Autowired
     private UserRepository userRepository;
 
-    public String addUser(Map<String, Object> payload){
+    public UserEntity addUser(Map<String, Object> payload){
         try {
             System.out.println("In add User service");
             UserEntity user = new UserEntity();
@@ -45,13 +46,28 @@ public class UserEnitityService {
             System.out.println(user.getId());
             System.out.println("before save");
             UserEntity user1 = userRepository.save(user);
-            //System.out.println(user1.getId());
-
-            return "User Added";
-        }catch (Exception e){
+            System.out.println(user1);
+            return user1;
+        }catch (Exception e) {
             e.printStackTrace();
-            return e.getMessage();
+            return null;
         }
+    }
+
+    public UserEntity loginUser(Map<String, Object> payload){
+        List<UserEntity> userEntityList = userRepository.getByUsername((String) payload.get("username"));
+        if (userEntityList.size()>0 &&
+                userEntityList.get(0).getPassword().equals((String) payload.get("password"))){
+            return userEntityList.get(0);
+        }
+        return null;
+    }
+
+    public long getUserId(String username){
+
+        List<UserEntity> user= userRepository.getByUsername(username);
+        long id= user.get(0).getId();
+        return id;
     }
 
     public List<UserEntity> getAllusers(){
@@ -60,14 +76,6 @@ public class UserEnitityService {
         return users;
     }
 
-    public boolean login(Map<String, Object> payload){
-        List<UserEntity> userEntityList = userRepository.getByUsername((String) payload.get("username"));
-        if (userEntityList.size()>0 &&
-                userEntityList.get(0).getPassword().equals((String) payload.get("password"))){
-            return true;
-        }
-        return false;
-    }
 
     public boolean adminLogin(Map<String, Object> payload){
 

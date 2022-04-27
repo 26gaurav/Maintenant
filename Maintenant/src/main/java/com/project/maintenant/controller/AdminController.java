@@ -1,6 +1,7 @@
 package com.project.maintenant.controller;
 
 import com.project.maintenant.model.entities.ComplaintEntity;
+import com.project.maintenant.model.entities.Response;
 import com.project.maintenant.model.entities.WorkerEntity;
 import com.project.maintenant.services.ComplaintEntityService;
 import com.project.maintenant.services.UserEnitityService;
@@ -28,7 +29,7 @@ public class AdminController {
     @PostMapping("/admin/login")
     public ResponseEntity<?> adminLogin(@RequestBody Map<String,Object> payload){
         if (userEnitityService.adminLogin(payload)){
-            return ResponseEntity.ok("Admin logged in Successfully");
+            return ResponseEntity.ok(payload);
         }
         else
             return ResponseEntity.badRequest().body("Invalid Username or Password of admin!");
@@ -51,12 +52,22 @@ public class AdminController {
             return ResponseEntity.badRequest().body("worker's Username already exists");
     }
 
+    @GetMapping("/admin/getAllWorkers")
+    public ResponseEntity<?> getAllWorkers(){
+
+        System.out.println("in get all workers api");
+        List<WorkerEntity> workerEntityList = workerEntityService.getAllWorkers();
+        return ResponseEntity.ok(workerEntityList);
+    }
+
     @GetMapping("/admin/{worker_id}/deleteWorker")
-    public ResponseEntity<?> deleteWorker(@PathVariable Long worker_id){
+    public ResponseEntity<?> deleteWorker(@PathVariable Long worker_id) throws Exception{
+
+        System.out.println("In delete worker api");
         if (workerEntityService.deleteWorker(worker_id))
-            return ResponseEntity.ok("Deleted SUccessfully");
+            return ResponseEntity.ok(new Response("Successfully deleted"));
         else
-            return ResponseEntity.ok("Worker has Pending Works.");
+            return ResponseEntity.ok(new Response("Worker has Pending Works."));
     }
 
     @GetMapping("/admin/{complaint_id}/updateProgress")

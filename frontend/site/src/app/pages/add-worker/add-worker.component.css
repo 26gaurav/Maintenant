@@ -1,0 +1,49 @@
+
+.card {
+    width: 90%;
+  }
+  
+  
+  .card-header {
+    color: #673ab7;
+  }
+  
+  body {
+    background: linear-gradient(90deg, #CBC3E3 0%, #CF9FFF 100%);
+  }
+    
+  
+  
+  
+  .add-patient-cont {
+      width: 90%;
+  
+      border-radius: 5px;
+      box-shadow: black 0px -1px 13px -6px;
+    }
+  
+    
+  
+  
+  
+  ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    background-color: white;
+    border-radius: 5px;
+  }
+  
+    .patient-details {
+      margin: 5%;
+      margin-top: 5%;
+      margin-bottom: 8%;
+    }
+  
+    .form-control.ng-touched.ng-invalid {
+      border: 2px solid red;
+    }
+  
+    .header{
+      background-color: blueviolet  ;
+      border-radius: 5px;
+      color: white;
+    }
+  

@@ -1,0 +1,49 @@
+<div fxLayout="row">
+    <mat-card class="example-card inline-block" fxFlexAlign="stretch" style="margin: 15px">
+      <mat-card-header>
+        <mat-card-title>Add Worker</mat-card-title>
+        <mat-card-subtitle>Add workers from various organizations</mat-card-subtitle>
+      </mat-card-header>
+      <img
+        mat-card-image
+        src="../../../../assets/add-workers.jpg"
+        alt="Photo of workers"
+      />
+      <mat-card-content>
+        <p>
+          Be a responsible admin. <b>ADD A WORKER</b> by carefuuly analysing the skills and training
+          of different workers from various organizations.
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" [routerLink]="'/add-worker'">
+          ADD WORKER
+        </button>
+      </mat-card-actions>
+    </mat-card>
+    
+    <mat-card class="example-card inline-block" fxFlexAlign="stretch" style="margin: 50px" >
+        <mat-card-header>
+          <mat-card-title>VIEW AND EDIT WORKER LIST</mat-card-title>
+          <mat-card-subtitle>View and exit worker list</mat-card-subtitle>
+        </mat-card-header>
+        <img
+          mat-card-image
+          src="../../../../assets/roads maintain.jpg"
+          alt="Photo of bad roads"
+        />
+        <mat-card-content>
+          <p>
+            Click here to view all workers list. This functionality also allows to <b> UPDATE ANF DELETE
+            WORKERS IF NEEDED </b> 
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="accent" [routerLink]="'/view-workers'">
+            VIEW AND EDIT WORKER LIST
+          </button>
+        </mat-card-actions>
+    </mat-card>
+    
+    </div>
+    

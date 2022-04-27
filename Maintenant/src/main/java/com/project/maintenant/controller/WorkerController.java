@@ -1,6 +1,7 @@
 package com.project.maintenant.controller;
 
 import com.project.maintenant.model.entities.ComplaintEntity;
+import com.project.maintenant.model.entities.Response;
 import com.project.maintenant.services.WorkerEntityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,10 +20,10 @@ public class WorkerController {
     @PostMapping("/worker/login")
     public ResponseEntity<?> login(@RequestBody Map<String,Object> payload){
         if (workerEntityService.login(payload)){
-            return ResponseEntity.ok("User logged in Successfully");
+            return ResponseEntity.ok(new Response("Successfully deleted"));
         }
         else
-            return ResponseEntity.badRequest().body("Invalid Username or Password!");
+            return ResponseEntity.badRequest().body(new Response("Invalid Username and Password"));
     }
 
     @GetMapping("worker/{id}/assignedComplaint")

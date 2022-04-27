@@ -65,6 +65,24 @@ public class ComplaintEntity {
             inverseJoinColumns = @JoinColumn(name = "worker_id"))
     private List<WorkerEntity> assignedWorker;
 
+    public ComplaintEntity(){
+
+    }
+
+
+    public ComplaintEntity(ComplaintEntity a) {
+        this.id = a.id;
+        this.heading = a.heading;
+        this.description = a.description;
+        this.issueDate = a.issueDate;
+        this.complaintImage = a.complaintImage;
+        this.addressDetail = a.addressDetail;
+        this.progressLevel = a.progressLevel;
+        this.progressDescription = a.progressDescription;
+        this.userByCreatedBy = a.userByCreatedBy;
+        this.assignedWorker = a.assignedWorker;
+    }
+
     public long getId() {
         return id;
     }

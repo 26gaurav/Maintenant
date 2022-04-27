@@ -104,4 +104,10 @@ public class WorkerEntityService {
         workerRepository.delete(workerEntity);
         return true;
     }
+
+    public List<WorkerEntity> getAllWorkers(){
+
+        List<WorkerEntity> workerEntityList = workerRepository.findAll();
+        return  workerEntityList;
+    }
 }

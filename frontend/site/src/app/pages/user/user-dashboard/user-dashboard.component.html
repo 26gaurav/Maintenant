@@ -1,0 +1,47 @@
+<div fxLayout="row">
+<mat-card class="example-card inline-block" fxFlexAlign="stretch" style="margin: 15px">
+  <mat-card-header>
+    <mat-card-title>Lodge Complaint</mat-card-title>
+    <mat-card-subtitle>add complaint in your area</mat-card-subtitle>
+  </mat-card-header>
+  <img
+    mat-card-image
+    src="../../../../assets/bad-roads.jpg"
+    alt="Photo of bad roads"
+  />
+  <mat-card-content>
+    <p>
+      Be a responsible citizen. <b>LODGE A COMPLAINT</b> if you are facing any
+      issue in your locality and we will take care
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" [routerLink]="'/add-complaint'">
+      REGISTER COMPLAINT
+    </button>
+  </mat-card-actions>
+</mat-card>
+
+<mat-card class="example-card inline-block" fxFlexAlign="stretch" style="margin: 15px" >
+    <mat-card-header>
+      <mat-card-title>VIEW AND EDIT YOUR COMPLAINTS</mat-card-title>
+      <mat-card-subtitle>Edit complaint</mat-card-subtitle>
+    </mat-card-header>
+    <img
+      mat-card-image
+      src="../../../../assets/roads maintain.jpg"
+      alt="Photo of bad roads"
+    />
+    <mat-card-content>
+      <p>
+        Click here to make changes and <b>UPDATE YOUR COMPLAINT</b> 
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="accent" [routerLink]="'/view-complaints'">
+        VIEW AND EDIT YOUR COMPLAINTS
+      </button>
+    </mat-card-actions>
+</mat-card>
+
+</div>

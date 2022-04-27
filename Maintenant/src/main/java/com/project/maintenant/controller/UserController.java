@@ -24,14 +24,16 @@ public class UserController {
     @RequestMapping(value="/addUser", method = RequestMethod.POST)
     public ResponseEntity<?> addPatient(@RequestBody Map<String,Object> payload) throws Exception{
         System.out.println("in add user api: REGISTER");
-        String res = userEnitityService.addUser(payload);
-        return  ResponseEntity.ok(res);
+        UserEntity user = userEnitityService.addUser(payload);
+        return  ResponseEntity.ok(user);
     }
 
-    @PostMapping("/user/login")
-    public ResponseEntity<?> login(@RequestBody Map<String,Object> payload){
-        if (userEnitityService.login(payload)){
-            return ResponseEntity.ok("User logged in Successfully");
+    @RequestMapping(value= "/user/login",method = RequestMethod.POST)
+    public ResponseEntity<?> login(@RequestBody Map<String,Object> payload) throws Exception{
+
+        UserEntity user= userEnitityService.loginUser(payload);
+        if (user!=null){
+            return ResponseEntity.ok(user);
         }
         else
             return ResponseEntity.badRequest().body("Invalid Username or Password!");
@@ -45,12 +47,22 @@ public class UserController {
         return ResponseEntity.ok(users);
     }
 
+    //find current user(given username return id)
+    @RequestMapping("/getUserId/{username}")
+    public ResponseEntity<?> getUserId(@PathVariable String username){
+
+        System.out.println("In get user api");
+        long id= userEnitityService.getUserId(username);
+        return ResponseEntity.ok(new Long(id));
+    }
+
+
     //User interaction with complaints
     @RequestMapping(value="/lodgeComplaint/{userId}", method = RequestMethod.POST)
     public ResponseEntity<?> lodgeComplaint(@RequestBody Map<String,Object> payload, @PathVariable Long userId) throws Exception{
         System.out.println("in lodge complaint api");
-        String res = complaintEntityService.addComplaint(payload,userId);
-        return  ResponseEntity.ok(res);
+        ComplaintEntity complaint = complaintEntityService.addComplaint(payload,userId);
+        return  ResponseEntity.ok(complaint);
     }
 
     @RequestMapping(value="/getComplaint/{complaintId}")
@@ -63,15 +75,23 @@ public class UserController {
     @RequestMapping(value="/updateComplaint/{complaintId}", method = RequestMethod.POST)
     public ResponseEntity<?> updateComplaint(@RequestBody Map<String,Object> payload, @PathVariable Long complaintId) throws Exception{
         System.out.println("in update complaint api");
-        String res = complaintEntityService.updateComplaint(payload,complaintId);
-        return  ResponseEntity.ok(res);
+        ComplaintEntity complaint = complaintEntityService.updateComplaint(payload,complaintId);
+        return  ResponseEntity.ok(complaint);
     }
 
-    @RequestMapping(value="/deleteComplaint/{complaintId}", method = RequestMethod.DELETE)
-    public ResponseEntity<?> deleteComplaint(@RequestBody Map<String,Object> payload, @PathVariable Long complaintId) throws Exception{
+    @RequestMapping(value="/deleteComplaint/{complaintId}")
+    public ResponseEntity<?> deleteComplaint(@PathVariable Long complaintId) throws Exception{
         System.out.println("in delete complaint api");
-        String res = complaintEntityService.deleteComplaint(payload,complaintId);
-        return  ResponseEntity.ok(res);
+        ComplaintEntity complaint = complaintEntityService.deleteComplaint(complaintId);
+        return  ResponseEntity.ok(complaint);
     }
 
+    //this returns an array of Json Objects which is printed as table in client side
+    @RequestMapping(value="/getAllComplaint/{userId}")
+    public ResponseEntity<?> getAllComplaintsUser(@PathVariable Long userId){
+        System.out.println("in get complaint api");
+        List<ComplaintEntity> complaintEntityList = complaintEntityService.getAllComplaintsUser(userId);
+        return ResponseEntity.ok(complaintEntityList);
+    }
 }
+

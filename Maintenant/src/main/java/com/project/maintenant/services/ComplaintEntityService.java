@@ -7,8 +7,10 @@ import com.project.maintenant.repo.ComplaintRepository;
 import com.project.maintenant.repo.UserRepository;
 import com.project.maintenant.repo.WorkerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.sql.Timestamp;
 import java.util.*;
@@ -25,7 +27,7 @@ public class ComplaintEntityService {
     @Autowired
     private WorkerRepository workerRepository;
 
-    public String addComplaint(Map<String, Object> payload,Long userId){
+    public ComplaintEntity addComplaint(Map<String, Object> payload,Long userId){
         try {
             System.out.println("In add Complaint service");
             ComplaintEntity complaint = new ComplaintEntity();
@@ -52,16 +54,18 @@ public class ComplaintEntityService {
 
             ComplaintEntity complaint1 = complaintRepository.save(complaint);
 
-            return "Complaint Added";
+            return complaint1;
         }catch (Exception e){
             e.printStackTrace();
-            return e.getMessage();
+            return null;
         }
     }
 
     public List<ComplaintEntity> getAllComplaints(){
-        List<ComplaintEntity> complaintEntityList = new ArrayList<ComplaintEntity>();
-        complaintRepository.findAll().forEach(complaint ->complaintEntityList.add(complaint));
+
+        List<ComplaintEntity> complaintEntityList= complaintRepository.findAll();
+//        List<ComplaintEntity> complaintEntityList = new ArrayList<ComplaintEntity>();
+//        complaintRepository.findAll().forEach(complaint ->complaintEntityList.add(complaint));
         return complaintEntityList;
     }
 
@@ -70,7 +74,7 @@ public class ComplaintEntityService {
         return complaint.get();
     }
 
-    public String updateComplaint(Map<String, Object> payload,Long complaintId){
+    public ComplaintEntity updateComplaint(Map<String, Object> payload,Long complaintId){
         try {
             System.out.println("In update Complaint service");
             Optional<ComplaintEntity> complaint= this.complaintRepository.findById(complaintId);
@@ -97,21 +101,25 @@ public class ComplaintEntityService {
 
             ComplaintEntity complaint1 = complaintRepository.save(complaint.get());
 
-            return "Complaint Updated";
+            return complaint1;
         }catch (Exception e){
             e.printStackTrace();
-            return e.getMessage();
+            return null;
         }
     }
 
-    public String deleteComplaint(Map<String, Object> payload,Long complaintId){
+    public ComplaintEntity deleteComplaint(Long complaintId){
+
         try {
             System.out.println("In delete Complaint service");
+            ComplaintEntity complaintEntity = complaintRepository.getById(complaintId);
+
+            //invoke copy constructor
+            ComplaintEntity complaint1 = new ComplaintEntity(complaintEntity);
             complaintRepository.deleteById(complaintId);
-            return "Complaint Deleted";
+            return complaint1;
         }catch (Exception e){
-            e.printStackTrace();
-            return e.getMessage();
+            return null;
         }
     }
 
@@ -133,6 +141,14 @@ public class ComplaintEntityService {
         workerEntityList.add(worker);
         complaintRepository.save(complaintEntity);
         return true;
+    }
+
+    public List<ComplaintEntity> getAllComplaintsUser(long userId){
+
+        UserEntity user= userRepository.getById(userId);
+        List<ComplaintEntity> complaintEntityList = complaintRepository.getComplaintEntitiesByUserByCreatedBy(user);
+
+        return  complaintEntityList;
     }
 
 }
