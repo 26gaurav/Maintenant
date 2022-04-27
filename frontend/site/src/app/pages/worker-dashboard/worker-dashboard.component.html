@@ -1,3 +1,4 @@
+<h1>All Complaints associated with Worker [{{firstname}}]</h1> 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   
     <!-- Heading Column -->
@@ -46,12 +47,8 @@
     <ng-container matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef> Action </th>
         <td mat-cell *matCellDef="let element"> 
-            <button (click)="updateProgress(element.id)"  mat-raised-button color="primary" >
-                UPDATE
-            </button>
-
-            <button mat-raised-button color="accent" [routerLink]="['/map-workers', element.id]">
-                MAP
+            <button (click)="updateProgress(element.id)" mat-raised-button color="primary">
+                MARK AS DONE
             </button>
         </td>
       </ng-container>

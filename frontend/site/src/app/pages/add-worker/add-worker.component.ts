@@ -23,6 +23,7 @@ export class AddWorkerComponent implements OnInit {
     pin: '',
     state:'',
     organisation:'',
+    password:''
   };
 
   constructor(private workerService : WorkerService,private router: Router) { }

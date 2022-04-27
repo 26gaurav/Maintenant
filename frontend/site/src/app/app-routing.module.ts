@@ -15,6 +15,8 @@ import { CrudWorkersComponent } from './pages/crud-workers/crud-workers.componen
 import { AddWorkerComponent } from './pages/add-worker/add-worker.component';
 import { ViewWorkersComponent } from './pages/view-workers/view-workers.component';
 import { AdminComplaintsComponent } from './pages/admin-complaints/admin-complaints.component';
+import { MapWorkersComponent } from './pages/map-workers/map-workers.component';
+import { WorkerDashboardComponent } from './pages/worker-dashboard/worker-dashboard.component';
 
 const routes: Routes=[
   { path: '', component: HomeComponent  },
@@ -29,6 +31,8 @@ const routes: Routes=[
   { path: 'add-worker', component: AddWorkerComponent, pathMatch: 'full'},
   { path: 'view-workers', component: ViewWorkersComponent, pathMatch: 'full'},
   { path: 'admin-complaints', component: AdminComplaintsComponent, pathMatch: 'full'},
+  { path: 'map-workers/:id', component: MapWorkersComponent, pathMatch: 'full'},
+  { path: 'worker-dashboard', component: WorkerDashboardComponent, pathMatch: 'full'},
   { path:'**', component: ErrorComponent}
 ]
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ComplaintService } from 'src/app/services/complaint.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-complaint',
@@ -16,7 +17,7 @@ export class AddComplaintComponent implements OnInit {
     district: '',
     pin: '',
     state:'',
-    progressLevel: 0,
+    progressLevel: 1,
     progressDescription: '',
   };
 
@@ -39,7 +40,9 @@ export class AddComplaintComponent implements OnInit {
       (data: any) => {
         //success
         console.log(data);
-        alert('success');
+        Swal.fire('The complaint is added! Dont worry, we are on it!');
+        //alert('success');
+        window.location.href= "/user-dashboard"
       },
       (error) => {
         //error

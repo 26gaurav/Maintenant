@@ -105,6 +105,19 @@
                       />
                     </mat-form-field>
 
+                    <mat-form-field style="width: 100%" appearance="outline">
+                      <mat-label for="password">Password</mat-label>
+                      <input
+                        [(ngModel)]="worker.password"
+                        name="password"
+                        id="password"
+                        type="password"
+                        class="form-control"
+                        required
+                        matInput
+                      />
+                    </mat-form-field>
+
                 </div>
 
             </mat-tab>

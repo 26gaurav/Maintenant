@@ -19,8 +19,8 @@ public class WorkerController {
 
     @PostMapping("/worker/login")
     public ResponseEntity<?> login(@RequestBody Map<String,Object> payload){
-        if (workerEntityService.login(payload)){
-            return ResponseEntity.ok(new Response("Successfully deleted"));
+        if (workerEntityService.login(payload)!=null){
+            return ResponseEntity.ok(workerEntityService.login(payload));
         }
         else
             return ResponseEntity.badRequest().body(new Response("Invalid Username and Password"));
@@ -36,10 +36,10 @@ public class WorkerController {
     }
 
     @GetMapping("worker/{worker_id}/{complaint_id}/updateProgress")
-    public ResponseEntity<?> updateProgress(@PathVariable Long worker_id, Long complaint_id){
+    public ResponseEntity<?> updateProgress(@PathVariable Long worker_id, @PathVariable Long complaint_id){
         if(workerEntityService.updateProgress(worker_id, complaint_id))
-            return ResponseEntity.ok("Progress updated successfully");
+            return ResponseEntity.ok(new Response("Progress updated successfully"));
         else
-            return ResponseEntity.badRequest().body("progress updation unsuccessful;");
+            return ResponseEntity.badRequest().body(new Response("progress update failed;"));
     }
 }

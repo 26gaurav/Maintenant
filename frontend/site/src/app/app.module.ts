@@ -40,6 +40,10 @@ import { CrudWorkersComponent } from './pages/crud-workers/crud-workers.componen
 import { AddWorkerComponent } from './pages/add-worker/add-worker.component';
 import { ViewWorkersComponent } from './pages/view-workers/view-workers.component';
 import { AdminComplaintsComponent } from './pages/admin-complaints/admin-complaints.component';
+import { MapWorkersComponent } from './pages/map-workers/map-workers.component';
+
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { WorkerDashboardComponent } from './pages/worker-dashboard/worker-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +64,8 @@ import { AdminComplaintsComponent } from './pages/admin-complaints/admin-complai
     AddWorkerComponent,
     ViewWorkersComponent,
     AdminComplaintsComponent,
+    MapWorkersComponent,
+    WorkerDashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -77,7 +83,8 @@ import { AdminComplaintsComponent } from './pages/admin-complaints/admin-complai
     MatIconModule,
     MatSelectModule,
     MatTabsModule,
-    MatTableModule
+    MatTableModule,
+    MatButtonToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

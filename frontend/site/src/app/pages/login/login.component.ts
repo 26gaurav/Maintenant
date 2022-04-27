@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { LoginService } from 'src/app/services/login.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -50,10 +51,10 @@ export class LoginComponent implements OnInit {
         //success
         this.LoginService.setUser(data);
         console.log("Login successful");
-        alert('success');
+        Swal.fire(`${this.loginData.role} Loggedin Successfuly!`);
 
         if(this.loginData.role=== "admin"){
-
+          
           window.location.href="/admin";
           //this.router.navigate(['admin']);
         }else if(this.loginData.role=== "user"){
@@ -61,7 +62,7 @@ export class LoginComponent implements OnInit {
           window.location.href="/user-dashboard";
           //this.router.navigate(['user-dashboard']);
         }else{
-
+          window.location.href="/worker-dashboard";
         }
       },
       (error) => {

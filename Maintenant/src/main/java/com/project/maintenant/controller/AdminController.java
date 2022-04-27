@@ -73,15 +73,15 @@ public class AdminController {
     @GetMapping("/admin/{complaint_id}/updateProgress")
     public ResponseEntity<?> updateProgress(@PathVariable Long complaint_id){
         workerEntityService.updateProgress((long)-1, complaint_id);
-        return ResponseEntity.ok("Complaint updated successfully");
+        return ResponseEntity.ok(new Response("Complaint updated successfully"));
     }
 
     @GetMapping("/admin/{worker_id}/{complaint_id}/complaintMapping")
     public ResponseEntity<?> complaintMapping(@PathVariable  Long worker_id, @PathVariable Long complaint_id){
         if(complaintEntityService.complaintMapping(worker_id, complaint_id)){
-            return ResponseEntity.ok("Worker mapped successfully");
+            return ResponseEntity.ok(new Response("Worker mapped successfully"));
         }
         else
-            return ResponseEntity.badRequest().body("Worker already mapped to the given complaint");
+            return ResponseEntity.badRequest().body(new Response("Worker already mapped to the given complaint"));
     }
 }

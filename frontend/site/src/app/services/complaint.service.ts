@@ -36,4 +36,16 @@ export class ComplaintService {
   public updateComplaint(complaint: any, complaintId: number) {
     return this.http.post(`${baseUrl}/updateComplaint/${complaintId}`, complaint);
   }
+
+  public getWorkerComplaints(workerId: number){
+    return this.http.get(`${baseUrl}/worker/${workerId}/assignedComplaint`);
+  }
+
+  public updateProgress(workerId: number, complaint_id: number){
+    return this.http.get(`${baseUrl}/worker/${workerId}/${complaint_id}/updateProgress`);
+  }
+
+  public updateProgressAdmin(complaintId: number){
+    return this.http.get(`${baseUrl}/admin/${complaintId}/updateProgress`);
+  }
 }

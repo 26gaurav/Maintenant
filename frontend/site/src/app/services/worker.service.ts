@@ -22,4 +22,8 @@ export class WorkerService {
 
     return this.http.get(`${baseUrl}/admin/${workerId}/deleteWorker`);
   }
+
+  public map(complaint_id: number, worker_id: number){
+    return this.http.get(`${baseUrl}/admin/${worker_id}/${complaint_id}/complaintMapping`);
+  }
 }

@@ -16,46 +16,57 @@ export interface Complaint {
 }
 
 @Component({
-  selector: 'app-admin-complaints',
-  templateUrl: './admin-complaints.component.html',
-  styleUrls: ['./admin-complaints.component.css']
+  selector: 'app-worker-dashboard',
+  templateUrl: './worker-dashboard.component.html',
+  styleUrls: ['./worker-dashboard.component.css']
 })
-export class AdminComplaintsComponent implements OnInit {
+export class WorkerDashboardComponent implements OnInit {
 
   constructor(private complaintService: ComplaintService) { }
 
   ngOnInit(): void {
-
-    this.getAllComplaints();
+    this.getWorkerComplaints();
   }
 
   ELEMENT_DATA!: Complaint[];
   displayedColumns: string[] = ['heading', 'description', 'addLine1' , 'district', 'state', 'pin' ,'progressLevel', 'action'];
   dataSource = new MatTableDataSource<Complaint>(this.ELEMENT_DATA);
+  firstname = ""
+  workerId=0
 
-  public getAllComplaints(){
+  public getWorkerComplaints(){
 
-    let response = this.complaintService.getAllComplaints();
+    //generate the id from the session storage
+    var x= JSON.parse(localStorage.getItem('user') || "")
+    this.workerId= x.id;
+    this.firstname= x.firstName;
+    console.log(this.workerId)
+
+    let response = this.complaintService.getWorkerComplaints(this.workerId);
 
     response.subscribe(complaint => this.dataSource.data = complaint as Complaint[]);
+
   }
 
-  public updateProgress(complaint_id: number){
-    console.log(complaint_id)
+  public updateProgress(complaintId: number){
 
-    this.complaintService.updateProgressAdmin(complaint_id).subscribe(
+    console.log(complaintId);
+    console.log(this.workerId);
+
+    this.complaintService.updateProgress(this.workerId,complaintId).subscribe(
       (data: any) => {
         //success
         console.log(data);
-        Swal.fire('Congratulations!!! The complaint is solved!!');
-        window.location.href="/admin-complaints"
+        Swal.fire('Congratulations!!! Your work is marked done for Admin approval!');
+        window.location.href="/worker-dashboard"
       },
       (error) => {
         //error
         console.log(error);
-        alert('something went wrong!');
+        alert('something went wrong');
       }
     );
+
   }
 
 }

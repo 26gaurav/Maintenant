@@ -20,13 +20,13 @@ public class WorkerEntityService {
     @Autowired
     ComplaintRepository complaintRepository;
 
-    public boolean login(Map<String, Object> payload){
+    public WorkerEntity login(Map<String, Object> payload){
         List<WorkerEntity> workerEntityList = workerRepository.getByUsername((String) payload.get("username"));
         if (workerEntityList.size()>0 &&
                 workerEntityList.get(0).getPassword().equals((String) payload.get("password"))){
-            return true;
+            return workerEntityList.get(0);
         }
-        return false;
+        return null;
     }
 
     public List<ComplaintEntity> assignedComplaints(Long id){
@@ -41,7 +41,9 @@ public class WorkerEntityService {
         ComplaintEntity complaintEntity = complaintRepository.getById(complaintId);
         if(worker_id==-1)//means admin initiated the progress
         {
+            System.out.println("Admin init");
             complaintEntity.setProgressLevel(3);
+            complaintRepository.save(complaintEntity);
             return true;
         }
         WorkerEntity workerEntity = workerRepository.getById(worker_id);
@@ -99,8 +101,12 @@ public class WorkerEntityService {
         List<ComplaintEntity> complaintEntityList = workerEntity.getComplaintEntity();
         for(ComplaintEntity c: complaintEntityList){
             if(c.getProgressLevel()!=3) //3 means task is not completed yet
+            {
                 return false;
+            }
+            complaintRepository.delete(c);
         }
+        System.out.println("ready to delete a worker");
         workerRepository.delete(workerEntity);
         return true;
     }
