@@ -21,7 +21,6 @@ export class NavbarComponent implements OnInit {
     console.log("Logout button is clicked")
     this.loginService.logout();
     window.location.href="/login";
-    //location.reload();
   }
 
 }
