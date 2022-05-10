@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d47b1387-afdb-46ef-85ce-dcb8e47b815d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../Maintenant/src/main/java/com/project/maintenant/controller/WorkerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Maintenant/src/main/java/com/project/maintenant/controller/WorkerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Maintenant/src/main/java/com/project/maintenant/model/entities/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Maintenant/src/main/java/com/project/maintenant/model/entities/UserEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Maintenant/src/main/java/com/project/maintenant/repo/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Maintenant/src/main/java/com/project/maintenant/repo/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Maintenant/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Maintenant/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/site/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/site/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/site/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
