@@ -1,15 +1,11 @@
 package com.project.maintenant.services;
 
-import com.project.maintenant.model.entities.ComplaintEntity;
 import com.project.maintenant.model.entities.UserEntity;
-import com.project.maintenant.model.entities.WorkerEntity;
-import com.project.maintenant.repo.UserRepository;
+import com.project.maintenant.services.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 

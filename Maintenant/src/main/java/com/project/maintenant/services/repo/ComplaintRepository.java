@@ -1,4 +1,4 @@
-package com.project.maintenant.repo;
+package com.project.maintenant.services.repo;
 
 import com.project.maintenant.model.entities.ComplaintEntity;
 import com.project.maintenant.model.entities.UserEntity;

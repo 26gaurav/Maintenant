@@ -3,14 +3,11 @@ package com.project.maintenant.services;
 import com.project.maintenant.model.entities.ComplaintEntity;
 import com.project.maintenant.model.entities.UserEntity;
 import com.project.maintenant.model.entities.WorkerEntity;
-import com.project.maintenant.repo.ComplaintRepository;
-import com.project.maintenant.repo.UserRepository;
-import com.project.maintenant.repo.WorkerRepository;
+import com.project.maintenant.services.repo.ComplaintRepository;
+import com.project.maintenant.services.repo.UserRepository;
+import com.project.maintenant.services.repo.WorkerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.sql.Timestamp;
 import java.util.*;
