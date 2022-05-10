@@ -16,7 +16,7 @@ import java.util.Map;
 @Service
 public class UserEnitityService {
 
-    @Autowired
+    @Autowired(required = false)
     private UserRepository userRepository;
 
     public UserEntity addUser(Map<String, Object> payload){
