@@ -1,0 +1,18 @@
+---
+- name: Pull docker image of the SPE_BAckend
+  hosts: all
+  tasks:
+    - name: pull docker image
+      shell: docker pull 26gaurav/backend
+      
+    - name: run docker image backend
+      shell: docker run -it -d 26gaurav/backend /bin/bash
+#     - name: Copy Docker Compose File
+#       copy:
+#         src: ./docker-compose.yml
+#         dest: ./
+#     - name: Pull Images
+#       command: docker-compose pull
+
+#     - name: Running Docker Compose File
+#       command: docker-compose -f docker-compose.yml up -d
