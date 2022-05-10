@@ -2,8 +2,8 @@ package com.project.maintenant.services;
 
 import com.project.maintenant.model.entities.WorkerEntity;
 import com.project.maintenant.model.entities.ComplaintEntity;
-import com.project.maintenant.services.repo.WorkerRepository;
-import com.project.maintenant.services.repo.ComplaintRepository;
+import com.project.maintenant.repo.WorkerRepository;
+import com.project.maintenant.repo.ComplaintRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,7 +1,7 @@
 package com.project.maintenant.services;
 
 import com.project.maintenant.model.entities.UserEntity;
-import com.project.maintenant.services.repo.UserRepository;
+import com.project.maintenant.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
