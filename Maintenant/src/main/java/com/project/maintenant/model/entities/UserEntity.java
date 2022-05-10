@@ -3,6 +3,7 @@ package com.project.maintenant.model.entities;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonRawValue;
 import com.sun.istack.NotNull;
+import org.springframework.context.annotation.Bean;
 
 import javax.persistence.*;
 import java.util.Collection;
