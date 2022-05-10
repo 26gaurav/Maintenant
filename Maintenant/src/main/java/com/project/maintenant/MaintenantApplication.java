@@ -9,8 +9,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
 @EnableJpaRepositories(basePackages="com.project.maintenant.repo")
-@EnableTransactionManagement
-@EntityScan(basePackages="com.project.maintenant.model.entities")
 public class MaintenantApplication {
 
     public static void main(String[] args) {
@@ -18,3 +16,7 @@ public class MaintenantApplication {
     }
 
 }
+
+
+//@EnableTransactionManagement
+//@EntityScan(basePackages="com.project.maintenant.model")
