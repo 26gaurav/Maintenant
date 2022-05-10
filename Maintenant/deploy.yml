@@ -2,8 +2,8 @@
 - name: Pull docker image of the SPE_BAckend
   hosts: all
   tasks:
-    - name: pull docker image
-      shell: docker pull 26gaurav/backend
+#     - name: pull docker image
+#       shell: docker pull 26gaurav/backend
       
 #     - name: run docker image backend
 #       shell: docker run -it -d 26gaurav/backend /bin/bash
