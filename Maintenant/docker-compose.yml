@@ -1,0 +1,44 @@
+version: "2.4"
+services:
+
+  mysqldb-container:
+    image: mysql/mysql-server
+    container_name: mysqldb-container
+#    volumes:
+#      - mysql-data:/var/lib/mysql
+    networks:
+      - my_net
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=maintenant
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=password
+
+  backend:
+    image: 26gaurav/backend
+    container_name: backend
+    networks:
+      - my_net
+    ports:
+      - "8098:8098"
+    links:
+      - mysqldb-container
+    depends_on:
+      mysqldb-container:
+        condition: service_healthy
+
+  frontend:
+    image: 26gaurav/frontend
+    container_name: frontend
+    networks:
+      - my_net
+    ports:
+      - "4200:4200"
+    depends_on:
+      - backend
+
+#volumes:
+#  mysql-data:
+
+networks:
+  my_net:
