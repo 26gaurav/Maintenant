@@ -1,6 +1,6 @@
-package com.project.maintenant.model.entities;
+package com.project.maintenant.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonRawValue;
 import com.sun.istack.NotNull;
 
@@ -8,8 +8,8 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "Worker", schema = "MunicipalityInitiative", catalog = "")
-public class WorkerEntity {
+@Table(name = "User", schema = "MunicipalityInitiative", catalog = "")
+public class UserEntity {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -62,13 +62,25 @@ public class WorkerEntity {
     @Column(name = "Password")
     private String password;
 
-    @Basic
-    @NotNull
-    @Column(name = "Organisation")
-    private String organisation;
+    @OneToMany(mappedBy = "userByCreatedBy")
+    private List<ComplaintEntity> complaints;
 
-    @ManyToMany(mappedBy="assignedWorker")
-    private List<ComplaintEntity> complaintEntity;
+    public UserEntity() {
+    }
+
+    public UserEntity(long id, String firstName, String lastName, String addressDetail, String email, String phoneNumber, int age, String gender, String username, String password, List<ComplaintEntity> complaints) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.addressDetail = addressDetail;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.age = age;
+        this.gender = gender;
+        this.username = username;
+        this.password = password;
+        this.complaints = complaints;
+    }
 
     public long getId() {
         return id;
@@ -150,20 +162,12 @@ public class WorkerEntity {
         this.password = password;
     }
 
-    public String getOrganisation() {
-        return organisation;
+    @JsonManagedReference
+    public List<ComplaintEntity> getComplaints() {
+        return complaints;
     }
 
-    public void setOrganisation(String organisation) {
-        this.organisation = organisation;
-    }
-
-    @JsonBackReference
-    public List<ComplaintEntity> getComplaintEntity() {
-        return complaintEntity;
-    }
-
-    public void setComplaintEntity(List<ComplaintEntity> complaintEntity) {
-        this.complaintEntity = complaintEntity;
+    public void setComplaints(List<ComplaintEntity> complaints) {
+        this.complaints = complaints;
     }
 }

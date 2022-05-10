@@ -1,4 +1,4 @@
-package com.project.maintenant.model.entities;
+package com.project.maintenant.model;
 
 public class Response {
     String res;

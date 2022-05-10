@@ -1,7 +1,7 @@
 package com.project.maintenant.controller;
 
-import com.project.maintenant.model.entities.ComplaintEntity;
-import com.project.maintenant.model.entities.UserEntity;
+import com.project.maintenant.model.ComplaintEntity;
+import com.project.maintenant.model.UserEntity;
 import com.project.maintenant.services.ComplaintEntityService;
 import com.project.maintenant.services.UserEnitityService;
 import org.springframework.beans.factory.annotation.Autowired;

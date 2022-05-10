@@ -1,4 +1,4 @@
-package com.project.maintenant.model.entities;
+package com.project.maintenant.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;

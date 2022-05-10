@@ -1,7 +1,7 @@
 package com.project.maintenant.controller;
 
-import com.project.maintenant.model.entities.ComplaintEntity;
-import com.project.maintenant.model.entities.Response;
+import com.project.maintenant.model.ComplaintEntity;
+import com.project.maintenant.model.Response;
 import com.project.maintenant.services.WorkerEntityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

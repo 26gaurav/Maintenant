@@ -1,6 +1,6 @@
 package com.project.maintenant.repo;
 
-import com.project.maintenant.model.entities.UserEntity;
+import com.project.maintenant.model.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

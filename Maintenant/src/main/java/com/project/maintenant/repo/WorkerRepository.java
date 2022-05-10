@@ -1,6 +1,6 @@
 package com.project.maintenant.repo;
 
-import com.project.maintenant.model.entities.WorkerEntity;
+import com.project.maintenant.model.WorkerEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
