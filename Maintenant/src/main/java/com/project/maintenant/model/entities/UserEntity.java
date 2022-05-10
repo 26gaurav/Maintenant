@@ -67,6 +67,23 @@ public class UserEntity {
     @OneToMany(mappedBy = "userByCreatedBy")
     private List<ComplaintEntity> complaints;
 
+    public UserEntity() {
+    }
+
+    public UserEntity(long id, String firstName, String lastName, String addressDetail, String email, String phoneNumber, int age, String gender, String username, String password, List<ComplaintEntity> complaints) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.addressDetail = addressDetail;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.age = age;
+        this.gender = gender;
+        this.username = username;
+        this.password = password;
+        this.complaints = complaints;
+    }
+
     public long getId() {
         return id;
     }
