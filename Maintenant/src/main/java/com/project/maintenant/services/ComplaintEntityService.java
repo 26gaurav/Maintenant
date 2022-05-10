@@ -4,7 +4,6 @@ import com.project.maintenant.model.ComplaintEntity;
 import com.project.maintenant.model.UserEntity;
 import com.project.maintenant.model.WorkerEntity;
 import com.project.maintenant.repo.ComplaintRepository;
-import com.project.maintenant.repo.UserRepository;
 import com.project.maintenant.repo.WorkerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

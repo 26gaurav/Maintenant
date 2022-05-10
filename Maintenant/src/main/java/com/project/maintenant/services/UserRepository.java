@@ -1,4 +1,4 @@
-package com.project.maintenant.repo;
+package com.project.maintenant.services;
 
 import com.project.maintenant.model.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;

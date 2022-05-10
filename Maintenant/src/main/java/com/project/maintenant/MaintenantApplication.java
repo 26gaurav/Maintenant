@@ -8,7 +8,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
-@EnableJpaRepositories(basePackages="com.project.maintenant.repo")
 public class MaintenantApplication {
 
     public static void main(String[] args) {
@@ -18,5 +17,6 @@ public class MaintenantApplication {
 }
 
 
+//@EnableJpaRepositories(basePackages="com.project.maintenant.repo")
 //@EnableTransactionManagement
 //@EntityScan(basePackages="com.project.maintenant.model")
