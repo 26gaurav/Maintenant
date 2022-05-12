@@ -6,17 +6,21 @@ import com.project.maintenant.model.WorkerEntity;
 import com.project.maintenant.services.ComplaintEntityService;
 import com.project.maintenant.services.UserEnitityService;
 import com.project.maintenant.services.WorkerEntityService;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Map;
 
+@Slf4j
 @RestController
 @CrossOrigin(origins = "*")
 public class AdminController {
 
+    private static final Logger logger = LoggerFactory.getLogger(AdminController.class);
     @Autowired
     private UserEnitityService userEnitityService;
 
@@ -28,7 +32,9 @@ public class AdminController {
 
     @PostMapping("/admin/login")
     public ResponseEntity<?> adminLogin(@RequestBody Map<String,Object> payload){
+        logger.info("in admin login");
         if (userEnitityService.adminLogin(payload)){
+            logger.info("Admin logged in successfully!");
             return ResponseEntity.ok(payload);
         }
         else
